@@ -32,7 +32,28 @@ const createProduct =async (req:Request,res:Response)=>{
     }
   };
 
+
+
+  const getProductID = async (req: Request, res: Response) => {
+    try {
+      const result = await ProductServices.getProductID();
+  
+      res.status(200).json({
+        success: true,
+        message: "Movies are fetched successfully !",
+        data: result,
+      });
+    } catch (err: any) {
+      res.status(500).json({
+        success: false,
+        message: "Could not fetch movies!",
+        error: err,
+      });
+    }
+  };
+
    export const ProductControllers={
     createProduct,
-    getAllProducts, 
+    getAllProducts,
+    getProductID, 
    }
